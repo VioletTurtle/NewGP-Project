@@ -25,7 +25,7 @@ public class DragNDrop : MonoBehaviour
         {
             RaycastHit hitInfo;
             getTarget = ReturnClickedObject(out hitInfo);
-            if (getTarget != null)
+            if (getTarget.tag == "Box")
             {
                 isMouseDragging = true;
                 //Converting world position to screen position.
