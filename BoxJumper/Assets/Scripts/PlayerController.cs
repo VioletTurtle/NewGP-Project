@@ -16,7 +16,7 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         anim = GetComponent<Animator>();
-
+        
         float degrees = 90;
         Vector3 to = new Vector3(degrees, 0, 0);
 
@@ -26,22 +26,27 @@ public class PlayerController : MonoBehaviour
 
     void OnCollisionStay()
     {
+
         isGrounded = true;
+
+
     }
 
     void Update()
     {
-        
 
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+
+        if (Input.GetKeyDown("space") && isGrounded)
         {
-            rb.AddForce(new Vector3(0, jumpPower, 0), ForceMode.VelocityChange);
             isGrounded = false;
+            rb.AddForce(new Vector3(0, jumpPower, 0), ForceMode.Impulse);
+            
             anim.SetBool("isJumping", true);
         }
         else
         {
             anim.SetBool("isJumping", false);
+            
         }
     }
 
